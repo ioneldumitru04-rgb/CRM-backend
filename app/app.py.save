@@ -1,0 +1,24 @@
+import requests as req
+from flask import Flask, jsonify, session
+import json
+import os
+import random
+from datetime import datetime, timedelta
+from werkzeug.security import generate_password_hash, check_password_hash
+import mysql.connector
+
+
+app = Flask(__name__)
+app.secret_key = 'secret_key' # prod key
+CORS(app, supports_credentials=True)
+
+
+db = mysql.connector.connect(
+	host="localhost",
+	user="kaliosky",
+	password="toor"
+	database="generalCRM"
+)
+
+
+
