@@ -9,15 +9,17 @@ pipeline {
         }
         stage('Testing') {
             parallel {
-                steps {
-                    echo "INTERPRETATOR TESTING"
-                    sh 'echo interpreted'
-                    sh 'echo exit succesfully'
+                stage('SECURITY CHECKS') {
+                    steps {
+                        echo "CHECK SECURITY PACKAGES" 
+                        sh 'echo security done'
+                    }
                 }
-                steps {
-                    echo "API testing"
-                    sh 'echo api interpreted'
-                    sh 'echo exit succesfully'
+                stage('API TESTING') {
+                    steps {
+                        echo 'CHECKING APIs FUNCTIONALITY'
+                        sh 'echo api works'
+                    }
                 }
             }
         }
