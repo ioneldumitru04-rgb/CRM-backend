@@ -8,11 +8,19 @@ pipeline {
             }
         }
         stage('Testing') {
-            steps {
-                sh 'echo Testing '
-                sh 'echo Testing x2'
-                sh 'echo Testing x3'
-                sh 'echo Testing x4'
+            parallel {
+                steps {
+                    label: "TESTARE 1",
+                    sh "TESTAREA DE LA 1"
+                    sh "TESTAREA DE LA 1 x1"
+                    sh "TESTAREA DE LA 1 x2"
+                }
+                steps {
+                    label: "TESTARE 2",
+                    sh "TESTAREA DE LA 2"
+                    sh "TESTAREA DE LA 2 x1"
+                    sh "TESTAREA DE LA 2 x2"
+                }
             }
         }
     }
