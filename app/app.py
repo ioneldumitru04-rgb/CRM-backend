@@ -142,6 +142,7 @@ def login():
     cur.execute("SELECT * FROM users WHERE Email=%s AND Password=%s;", (email, password))
     user = cur.fetchone()
 
+
     cur.close()
     conn.close()
 
