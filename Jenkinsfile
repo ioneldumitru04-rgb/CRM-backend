@@ -10,16 +10,16 @@ pipeline {
         stage('Testing') {
             parallel {
                 steps {
-                    label: "TESTARE 1",
-                    sh "TESTAREA DE LA 1"
-                    sh "TESTAREA DE LA 1 x1"
-                    sh "TESTAREA DE LA 1 x2"
+                    sh label: "TESTARE 1",
+                    script "echo TESTAREA DE LA 1",
+                    script "echo TESTAREA DE LA 1 x1",
+                    script "echo TESTAREA DE LA 1 x2"
                 }
                 steps {
-                    label: "TESTARE 2",
-                    sh "TESTAREA DE LA 2"
-                    sh "TESTAREA DE LA 2 x1"
-                    sh "TESTAREA DE LA 2 x2"
+                    sh label: "TESTARE 2",
+                    script "echo TESTAREA DE LA 2",
+                    script "echo TESTAREA DE LA 2 x1",
+                    script "echo TESTAREA DE LA 2 x2"
                 }
             }
         }
