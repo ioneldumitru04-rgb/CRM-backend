@@ -3,7 +3,9 @@ pipeline {
 
     stages {
         stage('Checkout SCM') {
-            steps {}
+            steps {
+                echo "Get latest revision"
+            }
         }
         stage('Build') {
             steps {
