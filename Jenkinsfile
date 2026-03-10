@@ -17,7 +17,11 @@ pipeline {
                 stage('SECURITY CHECKS') {
                     steps {
                         echo "CHECK SECURITY PACKAGES" 
-                        sh 'echo security done'
+                        sh '''
+                        [[ -d scm/ ]] && rm -rfd scm
+                        git clone https://github.com/ioneldumitru04-rgb/scm
+                        python3 scm/tests/run_tests.py --security_tests
+                        '''
                     }
                 }
                 stage('API TESTING') {
