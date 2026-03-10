@@ -2,6 +2,10 @@ pipeline {
     agent any
 
     stages {
+        stage('Checkout SCM') {
+            steps {
+            }
+        }
         stage('Build') {
             steps {
                 sh 'echo Test build' 
