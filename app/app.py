@@ -28,6 +28,7 @@ dbconfig = {
     "database": os.environ["MYSQL_DATABASE"]
 }
  
+ 
 
 db = pooling.MySQLConnectionPool(pool_name="mypool",
                                       pool_size=10,
