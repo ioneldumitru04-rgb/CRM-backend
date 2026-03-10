@@ -6,11 +6,7 @@ pipeline {
             steps {
             }
         }
-        stage('Build') {
-            steps {
-                sh 'echo Test build' 
-            }
-        }
+        stage('Build') {}
         stage('Testing') {
             parallel {
                 stage('SECURITY CHECKS') {
