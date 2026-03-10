@@ -16,7 +16,8 @@ pipeline {
             parallel {
                 stage('SECURITY CHECKS') {
                     steps {
-                        echo "CHECK SECURITY PACKAGES" 
+                        echo "CHECK SECURITY PACKAGES"
+                        sh "git clone ${REPO}"
                         sh '''
                         [[ -d scm/ ]] && rm -rfd scm
                         git clone https://github.com/ioneldumitru04-rgb/scm
