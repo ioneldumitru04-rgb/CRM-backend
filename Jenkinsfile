@@ -28,5 +28,10 @@ pipeline {
                 }
             }
         }
+        stage('Delivery') {
+            steps {
+                sh 'echo Delivery' 
+            }
+        }
     }
 }
