@@ -11,9 +11,6 @@ pipeline {
             steps {
                 sh 'echo Testing '
             }
-            steps {
-                sh 'echo Testing x2'
-            }
         }
     }
 }

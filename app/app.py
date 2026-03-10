@@ -28,13 +28,13 @@ dbconfig = {
     "database": os.environ["MYSQL_DATABASE"]
 }
  
- 
+
 
 db = pooling.MySQLConnectionPool(pool_name="mypool",
                                       pool_size=10,
                                       pool_reset_session=True,
                                       **dbconfig)
-
+ 
 
 def login_required(f):
     def decorated_function(*args, **kwargs):
