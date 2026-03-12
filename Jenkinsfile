@@ -19,6 +19,7 @@ pipeline {
                         echo "CHECK SECURITY PACKAGES"
                         sh "git clone ${REPO}"
                         sh '''
+                        set -e
                         [[ -d scm/ ]] && rm -rfd scm
                         git clone https://github.com/ioneldumitru04-rgb/scm
                         python3 scm/tests/run_tests.py --security_tests
