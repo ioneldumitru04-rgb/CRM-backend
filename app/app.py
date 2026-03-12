@@ -39,7 +39,7 @@ db = pooling.MySQLConnectionPool(pool_name="mypool",
 def login_required(f):
     def decorated_function(*args, **kwargs):
         if 'user_id' not in session:
-            return jsonify({"message": "Authentication required"}), 401
+            return jsonify({"message": "Authentication required"}), 400
         return f(*args, **kwargs)
     decorated_function.__name__ = f.__name__
     return decorated_function
