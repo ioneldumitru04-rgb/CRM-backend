@@ -38,7 +38,11 @@ pipeline {
         }
         stage('Automated Security Checks') {
             steps {
-                echo "Bandit call"
+                echo "BANDIT STARTED"
+                sh '''
+                set -eo pipefail
+                python3 scm/tests/run_tests.py --automated_security_tests
+                '''
             }
         }
         stage('Delivery') {
