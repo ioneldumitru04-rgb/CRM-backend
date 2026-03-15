@@ -16,7 +16,7 @@ pipeline {
         }
         stage('Testing') {
             parallel {
-                stage('SECURITY CHECKS') {
+                stage('Unit Tests Security') {
                     steps {
                         echo "CHECK SECURITY PACKAGES"
                         sh "git clone ${REPO}"
@@ -28,12 +28,17 @@ pipeline {
                         '''
                     }
                 }
-                stage('API TESTING') {
+                stage('Unit Tests API') {
                     steps {
                         echo 'CHECKING APIs FUNCTIONALITY'
                         sh 'echo api works'
                     }
                 }
+            }
+        }
+        stage('Automated Security Checks') {
+            steps {
+                echo "Bandit call"
             }
         }
         stage('Delivery') {
