@@ -67,7 +67,7 @@ def register():
         return jsonify({"message": "Data forms are required"}), 400
 
     #need to check if service_name/email exist
-
+    conn = db.get_connection()
     cur = db.cursor(buffered=True)
     cur.execute("INSERT INTO users (First_Name, Last_Name, Email, Service_Name, Password) VALUES (%s, %s, %s, %s, %s);", (first_name, last_name, email, service_name, password))
     db.commit()

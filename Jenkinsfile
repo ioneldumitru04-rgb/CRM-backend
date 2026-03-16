@@ -31,7 +31,10 @@ pipeline {
                 stage('Unit Tests API') {
                     steps {
                         echo 'CHECKING APIs FUNCTIONALITY'
-                        sh 'echo api works'
+                        sh '''
+                        set -eo pipefail
+                        python3 scm/tests/run_tests.py --functionality_tests
+                        '''
                     }
                 }
             }
