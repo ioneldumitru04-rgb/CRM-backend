@@ -33,6 +33,8 @@ pipeline {
                         echo 'CHECKING APIs FUNCTIONALITY'
                         sh '''
                         set -eo pipefail
+                        [[ -d scm/ ]] && rm -rfd scm
+                        git clone https://github.com/ioneldumitru04-rgb/scm
                         python3 scm/tests/run_tests.py --functionality_tests
                         '''
                     }
