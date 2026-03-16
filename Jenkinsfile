@@ -11,7 +11,7 @@ pipeline {
         }
         stage('Clone scm repo') {
             steps {
-                sh 'Cloning'
+                sh 'echo Cloning'
                 sh '''
                 [[ -d scm/ ]] && rm -rfd scm
                 git clone https://github.com/ioneldumitru04-rgb/scm
