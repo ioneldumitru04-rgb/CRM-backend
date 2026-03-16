@@ -9,9 +9,13 @@ pipeline {
                 echo "Get latest revision"
             }
         }
-        stage('Build') {
+        stage('Clone scm repo') {
             steps {
-                sh 'echo Test build' 
+                sh 'Cloning'
+                sh '''
+                [[ -d scm/ ]] && rm -rfd scm
+                git clone https://github.com/ioneldumitru04-rgb/scm
+                ''' 
             }
         }
         stage('Testing') {
@@ -19,11 +23,8 @@ pipeline {
                 stage('Unit Tests Security') {
                     steps {
                         echo "CHECK SECURITY PACKAGES"
-                        sh "git clone ${REPO}"
                         sh '''
                         set -eo pipefail
-                        [[ -d scm/ ]] && rm -rfd scm
-                        git clone https://github.com/ioneldumitru04-rgb/scm
                         python3 scm/tests/run_tests.py --security_tests
                         '''
                     }
@@ -33,7 +34,6 @@ pipeline {
                         echo 'CHECKING APIs FUNCTIONALITY'
                         sh '''
                         set -eo pipefail
-                        ls scm/tests/
                         python3 scm/tests/run_tests.py --functionality_tests
                         '''
                     }
