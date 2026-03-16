@@ -4,7 +4,7 @@ pipeline {
         ansiColor('xterm')
     }
     stages {
-        stage('Checkout SCM') {
+        stage('Checkout product') {
             steps {
                 echo "Get latest revision"
             }
@@ -12,6 +12,7 @@ pipeline {
         stage('Clone scm repo') {
             steps {
                 sh 'echo Cloning'
+                sh "git clone ${REPO}"
                 sh '''
                 [[ -d scm/ ]] && rm -rfd scm
                 git clone https://github.com/ioneldumitru04-rgb/scm
